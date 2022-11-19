@@ -3,7 +3,6 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const AnsweredSchema = new Schema({
-    question: String, 
     user_id:{
         type:Schema.Types.ObjectId, ref:'User'
     },
