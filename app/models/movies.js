@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
 
-const MovieSchema = new Schema({
+const SurveySchema = new Schema({
     name: String, 
     year: String, 
     director: String,
@@ -13,4 +13,4 @@ const MovieSchema = new Schema({
     collection: 'movies'
 });
 
-export default mongoose.model('Movies', MovieSchema);
+export default mongoose.model('Movies', SurveySchema);
