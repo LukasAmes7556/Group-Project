@@ -16,4 +16,4 @@ const AnsweredSchema = new Schema({
     collection: 'answers'
 });
 
-export default mongoose.model('Answer', QuestionSchema);
+export default mongoose.model('Answer', AnsweredSchema);
