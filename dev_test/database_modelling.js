@@ -3,7 +3,6 @@ sampleSurveyData = {
     "survey_user_id":"submitted_user_id",
     "survey_created_at": '12:51:00PM',
     "question_id": [123,124,125,126,127],
-    "survey_done_by": "user_id"
 }
 sampleCreatedQuestionData = [
     {
