@@ -1,3 +1,10 @@
+sampleSurveyData = {
+    "survey_id": 123,
+    "survey_user_id":"submitted_user_id",
+    "survey_created_at": '12:51:00PM',
+    "question_id": [123,124,125,126,127],
+    "survey_done_by": "user_id"
+}
 sampleCreatedQuestionData = [
     {
         "question_id": 123,
@@ -28,22 +35,32 @@ sampleCreatedQuestionData = [
     }
 ]
 
-sampleAnsweredData = [
+SurveyAnsweredData = [
     {
+        "answer_id" : 11111,
         "question_id": 123,
-        "answer": "White"
+        "user_id" : "user_id",
+        "Enterered": "White"
     },
     {
-        "question_id": 124,
-        "answer": "Yello"
+        "answer_id" : 11111,
+        "question_id": 123,
+        "user_id" : "user_id",
+        "Enterered": "White"
     },
     {
-        "question_id": 125,
-        "answer": "White"
+        "answer_id" : 11111,
+        "question_id": 123,
+        "user_id" : "user_id",
+        "Enterered": "White"
     },
     {
-        "question_id": 126,
-        "answer": "White"
+        "answer_id" : 11111,
+        "question_id": 123,
+        "user_id" : "user_id",
+        "Enterered": "White"
     }
 ]
+
+
 
