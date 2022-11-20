@@ -1,4 +1,4 @@
-import surveyModel from "../../models/survey";
+import surveyModel from "../../models/survey.js";
 
 
 export function GetList(res,req,next) {
@@ -8,7 +8,7 @@ export function GetList(res,req,next) {
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', survey: surveyCollection, user: req.user})
+        res.json({success: true, msg: 'Success', survey: surveyCollection, user: req.user});
     });
 }
 
