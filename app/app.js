@@ -40,7 +40,7 @@ import indexRouter from './routes/index.route.server.js'
 import authApiRouter from './routes/api/auth-api.router.server.js';
 import moviesApiRouter from './routes/api/movies-api.router.server.js';
 import surveyApiRouter from './routes/api/survey-api.router.server.js';
-import questionApiRouter from './routes/api/movies-api.router.server.js';
+import questionApiRouter from './routes/api/question-api.router.server.js';
 import answerApiRouter from './routes/api/answer-api.router.server.js';
 
 
@@ -110,8 +110,8 @@ app.use('/', indexRouter);
 app.use('/api/auth', authApiRouter);
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesApiRouter);
 app.use('/api/survey',surveyApiRouter);
-app.use('api/question/',questionApiRouter);
-app.use('api/answer/',answerApiRouter)
+app.use('/api/question',questionApiRouter);
+app.use('/api/answer',answerApiRouter)
 
 export default app;
 

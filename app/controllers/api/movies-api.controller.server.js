@@ -1,4 +1,4 @@
-import surveyModel from '../../models/movies.js';
+import surveyModel from '../../models/movie.js';
 
 export function GetList(req, res, next){
     surveyModel.find((err, surveyCollection)=>{
