@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './content/auth/login/login.component';
 import { RegisterComponent } from './content/auth/register/register.component';
+import { SurveyAddComponent } from './survey-add/survey-add.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from './content/auth/register/register.component';
     FooterComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SurveyAddComponent
   ],
   imports: [
     BrowserModule,
