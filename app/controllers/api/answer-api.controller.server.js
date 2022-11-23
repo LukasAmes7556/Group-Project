@@ -7,7 +7,7 @@ export function GetList(req, res, next){
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', survey: answerCollection})
+        res.json({success: true, msg: 'Success', answer: answerCollection})
     });
 }
 

@@ -1,7 +1,7 @@
 import surveyModel from "../../models/survey.js";
 
 
-export function GetList(res,req,next) {
+export function GetList(req,res,next) {
     surveyModel.find((err, surveyCollection)=>{
         if(err){
             console.error(err);

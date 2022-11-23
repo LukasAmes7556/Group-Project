@@ -1,6 +1,6 @@
 import questionModel from "../../models/question.js";
 
-export function GetList(){
+export function GetList(req,res,next){
     questionModel.find((err, questionCollection)=>{
         if(err){
             console.error(err);
@@ -10,7 +10,7 @@ export function GetList(){
         res.json({success: true, msg: 'Success', questions: questionCollection, user: req.user})
     });
 }
-export function Add(){
+export function Add(req,res,next){
     let newquestion = new questionModel({
         "question": req.body.question,
         "question_type":req.body.question_type,
@@ -24,7 +24,7 @@ export function Add(){
         res.json({success: true, msg: 'Success', newquestion });
     });
 }
-export function Edit(){
+export function Edit(req,res,next){
     let updatedquestion = new questionModel({
         "question": req.body.question,
         "question_type":req.body.question_type,
@@ -38,7 +38,7 @@ export function Edit(){
         res.json({success: true, msg: 'Success', updatedquestion });
     });
 }
-export function Delete(){
+export function Delete(req,res,next){
     let id = req.params.id;
 
     questionModel.remove({_id: id}, (err)=>{
