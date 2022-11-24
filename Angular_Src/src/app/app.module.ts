@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './content/auth/login/login.component';
 import { RegisterComponent } from './content/auth/register/register.component';
 import { SurveyAddComponent } from './survey-add/survey-add.component';
+import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { SurveyAddComponent } from './survey-add/survey-add.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
