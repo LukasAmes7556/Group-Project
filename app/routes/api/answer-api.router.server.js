@@ -3,8 +3,8 @@ import { GetList,Add,Delete } from "../../controllers/api/answer-api.controller.
 
 const router = Router();
 
-router.get('/list', GetList);
-router.post('/add', Add);
-router.delete('/delete/:id', Delete);
+router.get('/api/list', GetList);
+router.post('/api/add', Add);
+router.delete('/api/delete/:id', Delete);
 
 export default router;

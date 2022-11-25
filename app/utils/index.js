@@ -17,16 +17,15 @@ export function AuthGuard(req, res, next){
 
 export function GenerateToken(user){
     const payload = {
-        id: user._id,
+        id: user._id, 
         displayName: user.displayName,
         username: user.username,
-        emailAddress: user.EmailAddress
+        emailAddress: user.emailAddress
     }
 
-    const jwtOptions = {
+    const jwtOption = {
         expiresIn: 604800 // 1 week
     }
 
-    return jwt.sign(payload, Secret, jwtOptions);
-
+    return jwt.sign(payload, Secret, jwtOption);
 }

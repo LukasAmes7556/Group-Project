@@ -1,79 +1,95 @@
-import surveyModel from '../../models/movie.js';
+import moviesModel from '../../models/movies.js'
 
 export function GetList(req, res, next){
-    surveyModel.find((err, surveyCollection)=>{
+    moviesModel.find((err, moviesCollection) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', survey: surveyCollection, user: req.user})
+        res.json({
+            success: true,
+            msg: 'Success',
+            movies: moviesCollection, 
+            user: req.user
+        });
     });
 }
 
 export function Get(req, res, next){
     let id = req.params.id;
 
-    surveyModel.findById(id, (err, survey) => {
+    moviesModel.findById(id, (err, movie) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', survey, user: req.user })
-    });
+        return res.json({
+            success: true, 
+            msg: 'Success',
+            movie, 
+            user: req.user
+        })
+    })
 }
 
 export function Add(req, res, next){
-    let newSurvey = new surveyModel({
-        "title": req.body.title,
-        "startdate": req.body.startdate,
-        "enddate": req.body.enddate,
-        "q1": req.body.q1,
-        "q2": req.body.q2,
-        "q3": req.body.q3,
+    let newMovie = new moviesModel({
+        ...req.body
     });
 
-    surveyModel.create(newSurvey, (err) => {
+    moviesModel.create(newMovie, (err) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', newSurvey });
+        // movie added successfully
+        res.json({
+            success: true, 
+            msg: 'Success',
+            movie: newMovie
+        })
     })
 }
 
 export function Edit(req, res, next){
     let id = req.params.id;
 
-    let updatedSurvey = new surveyModel({
-        "_id": id,
-        "name": req.body.name,
-        "contactno": req.body.contactno,
-        "email": req.body.email,
-        "comments": req.body.comments
+    let updatedMovie = new moviesModel({
+        "_id": id, 
+        ...req.body
     });
 
-    surveyModel.updateOne({_id: id}, updatedSurvey, (err) => {
+    moviesModel.updateOne({_id: id}, updatedMovie, (err) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', updatedSurvey });
+        res.json({
+            success: true,
+            msg: 'Success',
+            movie: updatedMovie
+        })
     })
+
+   
 }
 
 export function Delete(req, res, next){
     let id = req.params.id;
 
-    surveyModel.remove({_id: id}, (err)=>{
+    moviesModel.remove({_id: id}, (err) => {
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success'})
+        res.json({
+            success: true,
+            msg: 'Deleted Succesfully'
+        })
     })
 }
