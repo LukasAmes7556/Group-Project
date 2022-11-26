@@ -9,7 +9,7 @@ const UserSchema = new Schema({
     emailAddress: String,    
 }, {
     timestamps: true,
-    colleciton: 'users'
+    collection: 'users'
 });
 
 UserSchema.plugin(passportLocalMongoose);
