@@ -66,7 +66,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname,'/client')));
 app.use(express.static(path.join(__dirname,'../public')));
 
-app.use(cors());
+//app.use(cors());
 
 // Auth Step 4 - Setup Express Session
 app.use(session({
