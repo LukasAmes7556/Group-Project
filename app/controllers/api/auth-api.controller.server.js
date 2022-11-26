@@ -51,6 +51,10 @@ export function processRegistration(req, res, next){
 
     userModel.register(newUser, req.body.password, (err) => {
         if(err){
+            if(err.name === 'UserExistsError'){
+                console.error('ERROR: User Already Exists!')
+            }
+            
             console.error(err);           
 
             return res.json({
