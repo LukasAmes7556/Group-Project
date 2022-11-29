@@ -5,11 +5,11 @@ import { LoginComponent } from './content/auth/login/login.component';
 import { RegisterComponent } from './content/auth/register/register.component';
 import { ContactComponent } from './content/contact/contact.component';
 import { HomeComponent } from './content/home/home.component';
-import { MovieAddComponent } from './content/movies/add/add.component';
-import { MovieEditComponent } from './content/movies/edit/edit.component';
-import { MovieListComponent } from './content/movies/list/list.component';
+import { MovieEditComponent } from './content/Surveys/edit/edit.component';
+import { MovieListComponent } from './content/Surveys/list/list.component';
 import { ProjectsComponent } from './content/projects/projects.component';
 import { ServicesComponent } from './content/services/services.component';
+import { SurveyAddComponent } from './content/Surveys/survey-add/survey-add.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'movies/list', component: MovieListComponent},
-  {path: 'movies/add', component: MovieAddComponent},
+  {path: 'survey/add', component: SurveyAddComponent},
   {path: 'movies/edit/:id', component: MovieEditComponent}
 ];
 

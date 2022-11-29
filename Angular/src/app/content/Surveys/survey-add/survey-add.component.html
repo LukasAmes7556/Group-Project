@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6 col-sm-12">
+          <div class="login" id="contentArea">
+              <h1 class="display-4">Create Survey</h1>
+
+              <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+
+                <div class="form-group">
+                  <div class="row">
+                    <p class="lead"><i class="fas fa-user-shield"></i>Title</p>
+                    <div class="col-md-6">                      
+                     
+
+                      <!-- Angular Version -->
+                      <input type="text" class="form-control" name="title"  
+                         placeholder="Enter Title" #survey_name required>
+                     <!-- <div *ngIf="survey_name.errors?.['required'] && f.submitted">Title is Required</div>-->
+
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <div class="row">
+                  </div>
+                </div>
+
+                <div *ngFor="let question of counter(Questions)">
+                  <div *ngIf="true then questionTemplate">
+    
+                  </div>
+                  </div>
+                
+
+                <ng-template #questionTemplate>
+                <div class="form-group mt-4">
+                  <div class="row">
+                    <p class="lead"><i class="fas fa-database"></i>Question {{Questions}}</p>
+                    <div class="col-md-12">
+
+                      <div class="mb-3">
+                        <label for="QuestionSelector" class="form-label">Question Type</label>
+                        <select id="QuestionSelector" #QuestionSelector class="form-select" (click)="selectChange(QuestionSelector.value)" required>
+                          <option>T/F</option>
+                          <option>Multiple Choice</option>
+                        </select>
+                      </div>
+                                    
+
+
+                      <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+
+                        <div>
+                          <label class="form-label">Answers</label>
+                        </div>
+
+                        <div *ngIf="isMultipleChoice then MultipleChoice else TrueAndFalse">
+                          
+                        </div>
+
+                        <ng-template #TrueAndFalse>
+
+                          <input type="text" class="form-control" name="Answer"  
+                             placeholder="Enter your Answer" required>
+                         <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+
+                         <input type="text" class="form-control" name="Answer2"  
+                            placeholder="Enter your Answer" required>
+                        <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+                        </ng-template>
+                        
+                        <ng-template #MultipleChoice>
+
+                    
+
+                          <input type="text" class="form-control" name="Answer"  
+                            placeholder="Enter your Answer" required>
+                         <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+
+                         <input type="text" class="form-control" name="Answer2"  
+                            placeholder="Enter your Answer" required>
+                        <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+                        
+                        <input type="text" class="form-control" name="Answer3"  
+                            placeholder="Enter your Answer" required>
+                         <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+
+                         <input type="text" class="form-control" name="Answer4"  
+                           placeholder="Enter your Answer" required>
+                        <div *ngIf="answer.errors?.['required'] && f.submitted">Answer is required </div>
+                        </ng-template>
+                      
+                    </form>
+                    </div>
+                  </div>
+                </div>
+   </ng-template>
+
+   <button id="submitButton" type="submit" (click)="addNewQuestion()" class="btn btn-primary btn-sm">
+    <i class="fas fa-user-plus"></i>Add Another Question</button>
+
+                        
+                <div class="text-end mt-2">
+                  <button id="submitButton" type="submit" class="btn btn-primary btn-lg">
+                    <i class="fas fa-user-plus"></i>Submit</button>
+                  <button id="cancelButton" type="reset" class="btn btn-warning btn-lg">
+                    <i class="fas fa-undo"></i> Cancel</button>
+                </div>
+              </form>
+            
+          </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

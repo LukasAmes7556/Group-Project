@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MoviesService } from 'src/app/services/movies.service';
+import { SurveyServiceService } from 'src/app/services/survey-service.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -12,20 +12,20 @@ export class MovieListComponent implements OnInit {
 
   isLoggedId = false;
   hasError = false;
-  movies = [];
+  surveys = [];
 
   constructor(
-    private movieService: MoviesService,
+    private surveyService: SurveyServiceService,
     private router: Router,
     private tokenStorageService: TokenStorageService  
   ) { }
 
   ngOnInit(): void {
     this.isLoggedId = !!this.tokenStorageService.getToken();
-    this.movieService.getMoviesList()
+    this.surveyService.getSurveysList()
       .subscribe({
         next: data => {
-          this.movies = data.movies;
+          this.surveys = data.surveys;
           this.hasError = false;
         },
         error: err => {
@@ -34,12 +34,12 @@ export class MovieListComponent implements OnInit {
       })
   }
 
-  editMovie(id: string): void {
-    this.router.navigate(['/movies/edit/' + id]);
+  editSurvey(id: string): void {
+    this.router.navigate(['/survey/edit/' + id]);
   }
 
-  deleteMovie(id: string): void {
-    this.movieService.deleteMovie(id)
+  deleteSurvey(id: string): void {
+    this.surveyService.deleteSurvey(id)
       .subscribe({
         next: data => {
           console.log(data);
@@ -53,6 +53,10 @@ export class MovieListComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  getSurvey(id: string): void {
+
   }
 
 }

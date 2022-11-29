@@ -1,8 +1,8 @@
 <div class="container">
-    <h1>Movie List</h1>
+    <h1>Survey List</h1>
 
-    <a href="/movies/add" routerLink="/movies/add" *ngIf="isLoggedId" class="btn btn-primary" role="button">
-        <i class="fas fa-plus-circle"></i> Add a Movie</a>
+    <a href="/survey/add" routerLink="/survey/add" *ngIf="isLoggedId" class="btn btn-primary" role="button">
+        <i class="fas fa-plus-circle"></i> Add a Survey</a>
 </div>
 <div class="row">
     <div class="col">
@@ -11,10 +11,8 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Director</th>
-                    <th scope="col">Genre</th>
-                    <th scope="col">Runtime</th>
+                    <th scope="col">Creator</th>
+                    <th scope="col" *ngIf="isLoggedId"></th>
                     <th scope="col" *ngIf="isLoggedId"></th>
                     <th scope="col" *ngIf="isLoggedId"></th>
                 </tr>
@@ -22,30 +20,27 @@
             <tbody id="movieList">
                 <!-- Repeatable Rows -->
 
-                <tr *ngFor="let movie of movies">
+                <tr *ngFor="let survey of surveys">
                     <td>
-                        {{ movie['name'] }}
+                        {{ survey['name'] }}
                     </td>
                     <td>
-                        {{ movie['year'] }}
-                    </td>
-                    <td>
-                        {{ movie['director'] }}
-                    </td>
-                    <td>
-                        {{ movie['genre'] }}
-                    </td>
-                    <td>
-                        {{ movie['runtime'] }}
+                        {{ survey['creator'] }}
                     </td>
                     <td *ngIf="isLoggedId">
-                        <button class="btn btn-primary btn-sm" (click)="editMovie(movie['_id'])">
+                        <button class="btn btn-primary btn-sm" (click)="getSurvey(survey['_id'])">
+                            <i class="fas fa-pencil-alt"></i>
+                            View
+                        </button>
+                    </td>
+                    <td *ngIf="isLoggedId">
+                        <button class="btn btn-primary btn-sm" (click)="editSurvey(survey['_id'])">
                             <i class="fas fa-pencil-alt"></i>
                             Edit
                         </button>
                     </td>
                     <td *ngIf="isLoggedId">
-                        <button class="btn btn-danger btn-sm" (click)="deleteMovie(movie['_id'])">
+                        <button class="btn btn-danger btn-sm" (click)="deleteSurvey(survey['_id'])">
                             <i class="fas fa-trash-alt"></i>
                             Delete
                         </button>

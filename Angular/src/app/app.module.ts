@@ -15,9 +15,9 @@ import { RegisterComponent } from './content/auth/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
-import { MovieAddComponent } from './content/movies/add/add.component';
-import { MovieEditComponent } from './content/movies/edit/edit.component';
-import { MovieListComponent } from './content/movies/list/list.component';
+import { MovieEditComponent } from './content/Surveys/edit/edit.component';
+import { MovieListComponent } from './content/Surveys/list/list.component';
+import { SurveyAddComponent } from './content/Surveys/survey-add/survey-add.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { MovieListComponent } from './content/movies/list/list.component';
     LoginComponent,
     RegisterComponent,
     MovieListComponent,
-    MovieAddComponent,
+    SurveyAddComponent,
     MovieEditComponent
   ],
   imports: [
