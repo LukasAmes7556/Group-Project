@@ -14,15 +14,14 @@ import passport from 'passport';
 import passportLocal from 'passport-local';
 import flash from 'connect-flash';
 
-// modules for JWT Support 
-import cors from 'cors'; 
+// modules for JWT Support
+import cors from 'cors';
 import passportJWT from 'passport-jwt';
 
-// define JWT Aliases
 let JWTStrategy = passportJWT.Strategy;
 let ExtractJWT = passportJWT.ExtractJwt;
 
-// Auth Step 2 - define our auth strategy
+// Auth Step 2 - defien our auth strategy
 let localStrategy = passportLocal.Strategy;
 
 // Auth Step 3 - import the user model
@@ -35,13 +34,13 @@ import mongoose from 'mongoose';
 import { MongoURI, Secret } from '../config/config.js';
 
 // Import Routes
+import indexRouter from './routes/index.route.server.js'
+import movieRouter from './routes/movies.route.server.js';
 import authRouter from './routes/auth.route.server.js';
 
-// Import Api Routes
-import authApiRouter from './routes/api/auth-api.route.server.js';
-import surveysApiRouter from './routes/api/survey-api.router.server.js';
-import answersApiRouter from './routes/api/answer-api.router.server.js';
-import questionsApiRouter from './routes/api/question-api.router.server.js';
+// Import API Routes
+import authApiRouter from './routes/api/auth-api.router.server.js';
+import moviesApiRouter from './routes/api/movies-api.router.server.js';
 
 // Instantiate Express Application
 const app = express();
@@ -64,10 +63,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname,'/client')));
+app.use(express.static(path.join(__dirname,'../client')));
 app.use(express.static(path.join(__dirname,'../public')));
 
-app.use(cors());
+app.use(cors()); // adds CORS (cross-origin resource sharing) - To be removed on PRODUCTION
 
 // Auth Step 4 - Setup Express Session
 app.use(session({
@@ -76,48 +75,54 @@ app.use(session({
     resave: false
 }));
 
-// Auth Step5 - Setup Flash
+// Auth Step 5 -  Setup Flash
 app.use(flash());
 
 // Auth Step 6 - Initialize Passport and Session
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Auth Step 7 - Implement the Auth Strategy
+// Auth Step 7 - Implementing the Auth Strategy
 passport.use(User.createStrategy());
 
 // Auth Step 8 - Setup serialization and deserialization
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// setup JWT Options
+// Setup JWT options
 let jwtOptions = {
     jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: Secret
 }
-// set JWT Strategy
+
+// Setup JWT Strategy
 let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
     User.findById(jwt_payload.id)
         .then(user => {
-            return done(null, user);
+            return done(null, user)
         })
         .catch(err => {
-            return done(err, false);
+            return done(err, false)
         });
 });
 
 passport.use(strategy);
 
+// Use Routes
+// app.use('/', indexRouter);
+// app.use('/', movieRouter);
+// app.use('/', authRouter);
 
-app.use('/', authRouter);
+// Use API Routes
 app.use('/api/auth', authApiRouter);
-app.use('/api/surveys', passport.authenticate('jwt', {session: false}), surveysApiRouter);
-app.use('/api/answers', passport.authenticate('jwt', {session: false}), answersApiRouter);
-app.use('/api/questions', passport.authenticate('jwt', {session: false}), questionsApiRouter);
+app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesApiRouter);
 
+
+// Use Angular Routes
 app.get('/*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
+
 
 export default app;
 

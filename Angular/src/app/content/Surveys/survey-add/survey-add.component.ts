@@ -16,7 +16,7 @@ export class SurveyAddComponent implements OnInit {
   survey: any = {
     survey_name: null,
     survey_user_id: null,
-    questions: null
+    question_id: null
   }
 
   question: any = {
@@ -34,6 +34,34 @@ export class SurveyAddComponent implements OnInit {
   
   onSubmit(): void {
     this.survey.survey_user_id = this.tokenService.getUser();
+
+    const {
+      survey_name,
+      survey_user_id,
+      question_id
+    } = this.survey;
+
+    const {
+      question,
+      question_type
+    } = this.question;
+
+    this.surveyService.addSurvey(this.survey).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+      }
+    })
+
+    this.questionService.addQuestions(this.question).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+      }
+    })
+    
   }
 
   counter(i: number) {

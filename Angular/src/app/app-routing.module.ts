@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'movies/list', component: MovieListComponent},
+  {path: 'survey/list', component: MovieListComponent},
   {path: 'survey/add', component: SurveyAddComponent},
   {path: 'movies/edit/:id', component: MovieEditComponent}
 ];

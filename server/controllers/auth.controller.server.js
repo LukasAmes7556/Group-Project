@@ -23,7 +23,7 @@ export function DisplayRegisterPage(req, res, next){
         return res.render('index', {title: 'Register', page: 'register', messages: req.flash('registerMessage'), displayName: UserDisplayName(req)});
     }
 
-    return res.redirect('/');
+    return res.redirect('/movie-list');
 }
 
 // Processing Function

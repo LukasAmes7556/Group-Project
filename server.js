@@ -2,7 +2,7 @@ import debug from 'debug';
 debug('comp-229');
 import http from 'http';
 
-import app from './app/app.js';
+import app from './server/app.js';
 
 const PORT = normalizePort(process.env.PORT || 3000);
 app.set('port', PORT);

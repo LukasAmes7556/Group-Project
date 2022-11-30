@@ -36,7 +36,7 @@
 <ng-template #TrueOrFalse>
   <div *ngFor="let i of counter(2)">
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="question.question" #questionName="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="question.answers" #questionName="ngModel"  placeholder="Enter your Answer" required>
   <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
   </div>
 </ng-template>
@@ -44,7 +44,7 @@
 <ng-template #MultipleChoice>
   <div *ngFor="let i of counter(4)">
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="question.question" #questionName="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="question.answers" #questionName="ngModel"  placeholder="Enter your Answer" required>
   <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
   </div>
 </ng-template>

@@ -1,10 +1,10 @@
-import passport from "passport";
+import passport from 'passport';
 import userModel from '../../models/user.js';
-import { GenerateToken } from "../../utils/index.js";
+import { GenerateToken } from '../../utils/index.js';
 
 export function processLogin(req, res, next){
     passport.authenticate('local', (err, user, info) => {
-        // are there any errors?
+        // are there any server errors?
         if(err){
             console.error(err);
             res.end(err);
@@ -12,15 +12,13 @@ export function processLogin(req, res, next){
 
         // are there any login errors?
         if(!user){
-            return res.json({
-                success: false,
-                msg: 'ERROR: Authenticatoin Failed'
-            })
+            return res.json({success: false, msg: 'ERROR: Authentication Failed'});
         }
 
+        // no problems -  we have a good username and password
         req.logIn(user, (err) => {
-            // are there any errors?
-            if(err){
+            // are there any db errors?
+            if (err){
                 console.error(err);
                 res.end(err);
             }
@@ -28,7 +26,7 @@ export function processLogin(req, res, next){
             const authToken = GenerateToken(user);
 
             return res.json({
-                success: true, 
+                success: true,
                 msg: 'User Logged In Successfully',
                 user: {
                     id: user._id,
@@ -43,32 +41,25 @@ export function processLogin(req, res, next){
 }
 
 export function processRegistration(req, res, next){
+    // instantiate a new user object
     let newUser = new userModel({
-        ...req.body
+        ...req.body //javascript destructing
     });
 
-    console.log(newUser);
-
     userModel.register(newUser, req.body.password, (err) => {
+        // errorr validations
         if(err){
             if(err.name === 'UserExistsError'){
                 console.error('ERROR: User Already Exists!')
             }
             
-            console.error(err);           
+            console.log(err);
 
-            return res.json({
-                success: false,
-                msg: 'Error Registration Failed'
-            });
+            return res.json({success: false, msg: 'ERROR: Registration Failed!'})
         }
 
-        //all ok
-
-        return res.json({
-            success: true,
-            msg: 'User Registered Successfully'
-        });
+        // all ok - user has been registered
+        return res.json({success: true, msg: 'User Registered Successfully'});
     })
 }
 
@@ -77,11 +68,10 @@ export function processLogout(req, res, next){
         if(err){
             console.error(err);
             res.end(err);
-        };
+        }
+
+        console.log('User Logged Out');
     });
 
-    res.json({
-        success:true,
-        msg: 'User logged out successfully'
-    })
+    res.json({success: true, msg: 'User logged out successfully'});
 }

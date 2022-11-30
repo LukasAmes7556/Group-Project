@@ -1,18 +1,13 @@
-import moviesModel from '../../models/movies.js'
+import moviesModel from '../../models/movies.js';
 
 export function GetList(req, res, next){
-    moviesModel.find((err, moviesCollection) => {
+    moviesModel.find((err, moviesCollection)=>{
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({
-            success: true,
-            msg: 'Success',
-            movies: moviesCollection, 
-            user: req.user
-        });
+        res.json({success: true, msg: 'Success', movies: moviesCollection, user: req.user})
     });
 }
 
@@ -25,13 +20,8 @@ export function Get(req, res, next){
             res.end(err);
         }
 
-        return res.json({
-            success: true, 
-            msg: 'Success',
-            movie, 
-            user: req.user
-        })
-    })
+        res.json({success: true, msg: 'Success', movie, user: req.user })
+    });
 }
 
 export function Add(req, res, next){
@@ -45,12 +35,7 @@ export function Add(req, res, next){
             res.end(err);
         }
 
-        // movie added successfully
-        res.json({
-            success: true, 
-            msg: 'Success',
-            movie: newMovie
-        })
+        res.json({success: true, msg: 'Success', newMovie });
     })
 }
 
@@ -58,7 +43,7 @@ export function Edit(req, res, next){
     let id = req.params.id;
 
     let updatedMovie = new moviesModel({
-        "_id": id, 
+        "_id": id,
         ...req.body
     });
 
@@ -68,28 +53,19 @@ export function Edit(req, res, next){
             res.end(err);
         }
 
-        res.json({
-            success: true,
-            msg: 'Success',
-            movie: updatedMovie
-        })
+        res.json({success: true, msg: 'Success', updatedMovie });
     })
-
-   
 }
 
 export function Delete(req, res, next){
     let id = req.params.id;
 
-    moviesModel.remove({_id: id}, (err) => {
+    moviesModel.remove({_id: id}, (err)=>{
         if(err){
             console.error(err);
             res.end(err);
         }
 
-        res.json({
-            success: true,
-            msg: 'Deleted Succesfully'
-        })
+        res.json({success: true, msg: 'Success'})
     })
 }
