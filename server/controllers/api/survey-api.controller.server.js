@@ -2,7 +2,7 @@ import surveyModel from "../../models/survey.js";
 
 
 export function GetList(req,res,next) {
-    surveyModel.find((err, surveyCollection)=>{
+    surveyModel.find({survey_user_id:req.user._id},(err, surveyCollection)=>{
         if(err){
             console.error(err);
             res.end(err);
@@ -27,9 +27,10 @@ export function Get(req, res, next){
 
 export function Add(req, res, next){
     let newSurvey = new surveyModel({
-        "survey_id" : req.body.survey_id,
-        "survey_user_id": req.user_id,
-        "question_id": req.questionId_Array
+        "survey_name" : req.body.survey_name,
+        "survey_user_id": req.user._id,
+        "timer":req.body.timer,
+        "question_id": req.body.questionId_Array
     });
 
     surveyModel.create(newSurvey, (err) => {
@@ -43,15 +44,16 @@ export function Add(req, res, next){
 }
 
 export function Edit(req, res, next){
-    let id = req.params.id;
+    let id = req.param._id;
 
     let updatedSurvey = new surveyModel({
-        "survey_id" : req.body.survey_id,
-        "survey_user_id": req.user_id,
-        "question_id": req.questionId_Array
+        "survey_name" : req.body.survey_name,
+        "timer" : req.body.survey_name,
+        "survey_user_id": req.user._id,
+        "question_id": req.body.questionId_Array
     });
 
-    surveyModel.updateOne({_id: id}, updatedSurvey, (err) => {
+    surveyModel.updateOne({_id: id}, {$set:updatedSurvey}, (err) => {
         if(err){
             console.error(err);
             res.end(err);
