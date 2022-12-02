@@ -65,14 +65,44 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTMzMDhkO
 
 
 ### Questions
+
 GET http://localhost:3000/api/question/list
 content-type: application/json
 Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
 
 
 
+POST http://localhost:3000/api/question/add
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+{
+        "question_text":"test text",
+        "question_type": "testType",
+        "default_answers": ["test1","test 2"]
+}
+
+
+
+PUT http://localhost:3000/api/question/edit/:id
+id:63898f59a13a6c403bd87c3b
+content-type: application/json
+{
+        "question_text":"Updated test text",
+        "question_type": "Updated testType",
+        "default_answers": ["Updated test1"," Updated test 2"]
+}
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+
+
+DELETE http://localhost:3000/api/question/delete/:id
+id:63898f59a13a6c403bd87c3b
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
 
 ### Survey
+GET http://localhost:3000/api/question/list
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
 
 
 ### Answers

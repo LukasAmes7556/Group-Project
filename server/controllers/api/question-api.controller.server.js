@@ -10,6 +10,7 @@ export function GetList(req,res,next){
         res.json({success: true, msg: 'Success', questions: questionCollection, user: req.user})
     });
 }
+
 export function Add(req,res,next){
     let newquestion = new questionModel({
         "question_text": req.body.question_text,
@@ -25,7 +26,7 @@ export function Add(req,res,next){
     });
 }
 export function Edit(req,res,next){
-    let updatedquestion = new questionModel({
+    /*let updatedquestion = new questionModel({
         "question": req.body.question,
         "question_type":req.body.question_type,
         "default_answers": req.body.default_answers
@@ -36,7 +37,7 @@ export function Edit(req,res,next){
             res.end(err);
         }
         res.json({success: true, msg: 'Success', updatedquestion });
-    });
+    });*/
 }
 export function Delete(req,res,next){
     let id = req.params.id;
