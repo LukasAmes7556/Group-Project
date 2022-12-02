@@ -12,7 +12,7 @@ export function GetList(req,res,next){
 }
 export function Add(req,res,next){
     let newquestion = new questionModel({
-        "question": req.body.question,
+        "question_text": req.body.question_text,
         "question_type":req.body.question_type,
         "default_answers": req.body.default_answers
     });

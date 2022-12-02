@@ -3,10 +3,10 @@ import { GetList,Get,Add,Edit,Delete } from "../../controllers/api/survey-api.co
 
 const router = Router();
 
-router.get('/api/list', GetList);
-router.get('/api/:id', Get);
-router.post('/api/add', Add);
-router.put('/api/edit/:id', Edit);
-router.delete('/api/delete/:id', Delete);
+router.get('/list', GetList);
+router.get('/:id', Get);
+router.post('/add', Add);
+router.put('/edit/:id', Edit);
+router.delete('/delete/:id', Delete);
 
 export default router;

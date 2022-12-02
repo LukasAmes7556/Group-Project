@@ -35,12 +35,15 @@ import { MongoURI, Secret } from '../config/config.js';
 
 // Import Routes
 import indexRouter from './routes/index.route.server.js'
-import movieRouter from './routes/movies.route.server.js';
-import authRouter from './routes/auth.route.server.js';
 
 // Import API Routes
 import authApiRouter from './routes/api/auth-api.router.server.js';
 import moviesApiRouter from './routes/api/movies-api.router.server.js';
+import surveyApiRouter from './routes/api/survey-api.router.server.js';
+import questionApiRouter from './routes/api/question-api.router.server.js';
+import answerApiRouter from './routes/api/answer-api.router.server.js';
+
+
 
 // Instantiate Express Application
 const app = express();
@@ -109,14 +112,12 @@ let strategy = new JWTStrategy(jwtOptions, (jwt_payload, done) => {
 passport.use(strategy);
 
 // Use Routes
-// app.use('/', indexRouter);
-// app.use('/', movieRouter);
-// app.use('/', authRouter);
-
-// Use API Routes
+app.use('/', indexRouter);
 app.use('/api/auth', authApiRouter);
 app.use('/api/movies', passport.authenticate('jwt', {session: false}), moviesApiRouter);
-
+app.use('/api/survey',surveyApiRouter);
+app.use('/api/question',passport.authenticate('jwt', {session: false}),questionApiRouter);
+app.use('/api/answer',answerApiRouter)
 
 // Use Angular Routes
 app.get('/*', (req, res) => {

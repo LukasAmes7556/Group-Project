@@ -63,8 +63,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNTMzMDhkO
 
 
 
-### Survey
 
 ### Questions
+GET http://localhost:3000/api/question/list
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+### Survey
+
 
 ### Answers
