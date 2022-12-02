@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AnswerServiceService } from 'src/app/services/answer-service.service';
 import { QuestionServiceService } from 'src/app/services/question-service.service';
 import { SurveyServiceService } from 'src/app/services/survey-service.service';
@@ -12,18 +12,17 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class SurveyAddComponent implements OnInit {
 
   Questions = 1;
+  surveyTitle = "";
+  questionType = null;
+  questionTitle = "";
+  message = "";
 
-  survey: any = {
-    survey_name: null,
-    survey_user_id: null,
-    question_id: null
-  }
-
-  question: any = {
-    question: null,
-    question_type: null
-  }
-  
+  Answers: any = {
+    Answer1: null,
+    Answer2: null,
+    Answer3: null,
+    Answer4: null
+  };
 
   constructor(private answerService: AnswerServiceService, private questionService: QuestionServiceService, private surveyService: SurveyServiceService, private tokenService: TokenStorageService) { }
 
@@ -33,42 +32,42 @@ export class SurveyAddComponent implements OnInit {
 
   
   onSubmit(): void {
-    this.survey.survey_user_id = this.tokenService.getUser();
+    //Save the final Question
 
-    const {
-      survey_name,
-      survey_user_id,
-      question_id
-    } = this.survey;
 
-    const {
-      question,
-      question_type
-    } = this.question;
-
-    this.surveyService.addSurvey(this.survey).subscribe({
-      next: data => {
-        console.log(data);
-      },
-      error: err => {
-      }
-    })
-
-    this.questionService.addQuestions(this.question).subscribe({
-      next: data => {
-        console.log(data);
-      },
-      error: err => {
-      }
-    })
+    //Redirect to survey list
     
-  }
-
-  counter(i: number) {
-    return Array(i);
   }
 
   addNewQuestions() {
     this.Questions += 1;
+
+
+    // Console Logs to be removed, they are just for debugging. Each time the add Button is Clicked It will save the previous question.
+
+    //Only save the surveyTitle once
+    if(this.Questions = 1) {
+    console.log(this.surveyTitle);
+    }
+
+    console.log(this.questionType);
+
+    console.log(this.questionTitle);
+
+    console.log(this.Answers.Answer1);
+    console.log(this.Answers.Answer2);
+    console.log(this.Answers.Answer3);
+    console.log(this.Answers.Answer4);
+
+    this.message = "Your Question has been saved, feel free to create more then click the submit button.";
+
+    //Resets for Next Question
+    this.questionTitle = "";
+    this.Answers.Answer1 = "";
+    this.Answers.Answer2 = "";
+    this.Answers.Answer3 = "";
+    this.Answers.Answer4 = "";
   }
 }
+
+

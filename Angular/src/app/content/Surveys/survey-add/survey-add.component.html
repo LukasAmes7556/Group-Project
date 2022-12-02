@@ -6,17 +6,22 @@
 
   <h5>Survey Title</h5>
   <input type="text" class="form-control" name="surveyTitle"  
-  [(ngModel)]="survey.survey_name" #surveyName="ngModel"  placeholder="Enter your Survey Title" required>
+  [(ngModel)]="surveyTitle" #surveyName="ngModel"  placeholder="Enter your Survey Title" required>
  <div *ngIf="surveyName.errors?.['required'] && f.submitted">Survey Title is required </div>
 
- <div *ngFor="let i of counter(Questions)">
+ <div *ngFor="let i of ">
+  <h6>Question Title</h6>
+  
+  <h6>Answers</h6>
+
+  </div>
   <h5>Question Title</h5>
   <input type="text" class="form-control" name="questionTitle"  
-  [(ngModel)]="question.question" #questionName="ngModel"  placeholder="Enter your Question Title" required>
+  [(ngModel)]="questionTitle" #questionName="ngModel"  placeholder="Enter your Question Title" required>
   <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
 
   <h5>Answers</h5>
-  <select class="form-select" #questionTypeSelector aria-label="Default select example" placeholder="Please Select your Question Type" [(ngModel)]="question.question_type">
+  <select name="selectBox" class="form-select" #questionTypeSelector aria-label="Default select example" placeholder="Please Select your Question Type" [(ngModel)]="questionType">
     <option value="TrueAndFalse">T/F</option>
     <option value="Multiple_Choice">Multiple Choice</option>
   </select>
@@ -29,24 +34,31 @@
 
   </div>
 
-</div>
+  <div id="messageArea" class="alert alert-danger" *ngIf="message != ''">
+    {{ message }}
+  </div>
+
+
 
 <button type="button" class="btn btn-primary btn-sm" (click)="addNewQuestions()">Add New Question</button>
 
 <ng-template #TrueOrFalse>
-  <div *ngFor="let i of counter(2)">
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="question.answers" #questionName="ngModel"  placeholder="Enter your Answer" required>
-  <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
-  </div>
+  [(ngModel)]="Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
+  <input type="text" class="form-control" name="answer"  
+  [(ngModel)]="Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
 </ng-template>
 
+
 <ng-template #MultipleChoice>
-  <div *ngFor="let i of counter(4)">
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="question.answers" #questionName="ngModel"  placeholder="Enter your Answer" required>
-  <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
-  </div>
+  [(ngModel)]="Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
+  <input type="text" class="form-control" name="answer"  
+  [(ngModel)]="Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
+  <input type="text" class="form-control" name="answer"  
+  [(ngModel)]="Answers.Answer3" #AnswerName3="ngModel"  placeholder="Enter your Answer" required>
+  <input type="text" class="form-control" name="answer"  
+  [(ngModel)]="Answers.Answer4" #AnswerName4="ngModel"  placeholder="Enter your Answer" required>
 </ng-template>
 
 <div class="text-end mt-2">
