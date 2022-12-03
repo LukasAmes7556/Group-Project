@@ -1,7 +1,7 @@
 import answerModel from '../../models/answer.js';
 
 export function GetList(req, res, next){
-    answerModel.find({user_id: req.body.user_id},(err, answerCollection)=>{
+    answerModel.find((err, answerCollection)=>{
         if(err){
             console.error(err);
             res.end(err);
@@ -13,7 +13,7 @@ export function GetList(req, res, next){
 
 export function Add(req, res, next){
     let newAnswer = new answerModel({
-        "user_id":req.body.user_id,
+        "user_id":req.user._id,
         "question_id":req.body.question_id,
         "enterered_answer":req.body.enterered_answer
     });

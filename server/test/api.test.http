@@ -99,10 +99,62 @@ DELETE http://localhost:3000/api/question/delete/:id
 id:63898f59a13a6c403bd87c3b
 Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
 
+
+
 ### Survey
-GET http://localhost:3000/api/question/list
+GET http://localhost:3000/api/survey/list
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+GET http://localhost:3000/api/survey/:id
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+POST http://localhost:3000/api/survey/add/
+content-type: application/json
+{
+    "survey_name": "Seaerch ID",
+    "survey_user_id": "6389a1b2996cfcb69a20deda",
+    "timer": "timer",
+    "questionId_Array": [
+        "637e7ce6bb8a826cc09e3d83",
+        "637e7dd8bb8a826cc09e3d84"
+    ]
+}
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+PUT http://localhost:3000/api/survey/edit/:id
+content-type: application/json
+{
+    "survey_name" : "req.body.survey_name",
+    "survey_timer" : "timer",
+    "questionId_Array": [
+        "637e7dd8bb8a826cc09e3d84"
+    ]
+}
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+DELETE http://localhost:3000/api/survey/delete/:id
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+### Answers
+
+GET http://localhost:3000/api/answer/list
 content-type: application/json
 Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
 
 
-### Answers
+POST http://localhost:3000/api/answer/add/
+content-type: application/json
+{
+    "user_id": "637d6cb69c4961e7ad5159d9",
+    "question_id": "637e7dd8bb8a826cc09e3d84",
+    "enterered_answer": "Yes"
+}
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM
+
+
+DELETE http://localhost:3000/api/answer/delete/:id
+content-type: application/json
+Authorizatoin : Bearer Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzODlhMWIyOTk2Y2ZjYjY5YTIwZGVkYSIsImRpc3BsYXlOYW1lIjoiU3RyaW5nIHVzZXJuYW1lIiwidXNlcm5hbWUiOiJTdHJpbmdHRyIsImlhdCI6MTY2OTk2NTE2NywiZXhwIjoxNjcwNTY5OTY3fQ.Pys7qtqXKCIy-c2yrIKKbaLHpGF5dPoloKnic6WCzmM

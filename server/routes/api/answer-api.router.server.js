@@ -4,8 +4,8 @@ import { AuthGuard } from "../../utils/index.js";
 
 const router = Router();
 
-router.get('/list', GetList);
-router.post('/add', Add);
-router.delete('/delete/:id', Delete);
+router.get('/list',AuthGuard, GetList);
+router.post('/add',AuthGuard, Add);
+router.delete('/delete/:id',AuthGuard, Delete);
 
 export default router;
