@@ -26,18 +26,20 @@ export function Add(req,res,next){
     });
 }
 export function Edit(req,res,next){
-    /*let updatedquestion = new questionModel({
+    let id = req.param.id;
+
+    let updatedquestion = new questionModel({
         "question": req.body.question,
         "question_type":req.body.question_type,
         "default_answers": req.body.default_answers
     });
-    questionModel.create(updatedquestion,(err) =>{
+    questionModel.updateOne({_id: id},{$set:updatedquestion},(err) =>{
         if (err) {
             console.error(err)
             res.end(err);
         }
         res.json({success: true, msg: 'Success', updatedquestion });
-    });*/
+    });
 }
 export function Delete(req,res,next){
     let id = req.params.id;

@@ -44,11 +44,11 @@ export function Add(req, res, next){
 }
 
 export function Edit(req, res, next){
-    let id = req.param._id;
+    let id = req.param.id;
 
     let updatedSurvey = new surveyModel({
         "survey_name" : req.body.survey_name,
-        "timer" : req.body.survey_name,
+        "survey_timer" : req.body.survey_timer,
         "survey_user_id": req.user._id,
         "question_id": req.body.questionId_Array
     });
@@ -59,7 +59,7 @@ export function Edit(req, res, next){
             res.end(err);
         }
 
-        res.json({success: true, msg: 'Success', updatedSurvey });
+        res.json({success: true, msg: 'Success', updatedSurvey, user: req.user});
     })
 }
 export function Delete(req, res, next){
