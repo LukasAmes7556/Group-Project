@@ -27,10 +27,7 @@ export function Get(req, res, next){
 
 export function Add(req, res, next){
     let newSurvey = new surveyModel({
-        "survey_name" : req.body.survey_name,
-        "survey_user_id": req.user._id,
-        "timer":req.body.timer,
-        "question_id": req.body.questionId_Array
+        ...req.body
     });
 
     surveyModel.create(newSurvey, (err) => {
