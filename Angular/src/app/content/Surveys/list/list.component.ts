@@ -10,7 +10,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class MovieListComponent implements OnInit {
 
-  isLoggedId = false;
+  isLoggedIn = false;
   hasError = false;
   surveys = [];
 
@@ -21,7 +21,7 @@ export class MovieListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.isLoggedId = !!this.tokenStorageService.getToken();
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
     this.surveyService.getSurveysList()
       .subscribe({
         next: data => {
@@ -56,7 +56,7 @@ export class MovieListComponent implements OnInit {
   }
 
   getSurvey(id: string): void {
-
+    this.router.navigate(['/survey/answer-page/' + id]);
   }
 
 }

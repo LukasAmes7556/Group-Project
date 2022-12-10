@@ -10,6 +10,7 @@ import { MovieListComponent } from './content/Surveys/list/list.component';
 import { ProjectsComponent } from './content/projects/projects.component';
 import { ServicesComponent } from './content/services/services.component';
 import { SurveyAddComponent } from './content/Surveys/survey-add/survey-add.component';
+import { AnswerPageComponent } from './content/Surveys/answer-page/answer-page.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'survey/list', component: MovieListComponent},
   {path: 'survey/add', component: SurveyAddComponent},
-  {path: 'movies/edit/:id', component: MovieEditComponent}
+  {path: 'movies/edit/:id', component: MovieEditComponent},
+  {path: 'survey/answer-page/:id', component: AnswerPageComponent}
 ];
 
 @NgModule({

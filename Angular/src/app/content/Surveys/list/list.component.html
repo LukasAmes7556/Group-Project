@@ -1,7 +1,7 @@
 <div class="container">
     <h1>Survey List</h1>
 
-    <a href="/survey/add" routerLink="/survey/add" *ngIf="isLoggedId" class="btn btn-primary" role="button">
+    <a href="/survey/add" routerLink="/survey/add" *ngIf="isLoggedIn" class="btn btn-primary" role="button">
         <i class="fas fa-plus-circle"></i> Add a Survey</a>
 </div>
 <div class="row">
@@ -12,9 +12,9 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Creator</th>
-                    <th scope="col" *ngIf="isLoggedId"></th>
-                    <th scope="col" *ngIf="isLoggedId"></th>
-                    <th scope="col" *ngIf="isLoggedId"></th>
+                    <th scope="col" *ngIf="isLoggedIn"></th>
+                    <th scope="col" *ngIf="isLoggedIn"></th>
+                    <th scope="col" *ngIf="isLoggedIn"></th>
                 </tr>
             </thead>
             <tbody id="movieList">
@@ -27,19 +27,19 @@
                     <td>
                         {{ survey['creator'] }}
                     </td>
-                    <td *ngIf="isLoggedId">
+                    <td *ngIf="isLoggedIn">
                         <button class="btn btn-primary btn-sm" (click)="getSurvey(survey['_id'])">
                             <i class="fas fa-pencil-alt"></i>
                             View
                         </button>
                     </td>
-                    <td *ngIf="isLoggedId">
+                    <td *ngIf="isLoggedIn">
                         <button class="btn btn-primary btn-sm" (click)="editSurvey(survey['_id'])">
                             <i class="fas fa-pencil-alt"></i>
                             Edit
                         </button>
                     </td>
-                    <td *ngIf="isLoggedId">
+                    <td *ngIf="isLoggedIn">
                         <button class="btn btn-danger btn-sm" (click)="deleteSurvey(survey['_id'])">
                             <i class="fas fa-trash-alt"></i>
                             Delete

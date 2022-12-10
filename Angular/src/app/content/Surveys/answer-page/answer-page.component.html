@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="offset-md-3 col-md-6 col-sm-12">
+  <h1 class="display-4">Create Survey</h1>
+  
+  <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+  
+    <h5>{{ survey.survey_name }}</h5>
+    
+    <h6>{{ survey.survey_user_id }}</h6>
+  
+    <h5>{{question.question_text}}</h5><br>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+        <label class="form-check-label" for="flexRadioDefault1">
+          {{ question.default_answers[1] }}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+        <label class="form-check-label" for="flexRadioDefault2">
+            {{ question.default_answers[2] }}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+        <label class="form-check-label" for="flexRadioDefault3">
+            {{ question.default_answers[3] }}
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+        <label class="form-check-label" for="flexRadioDefault4">
+            {{ question.default_answers[4] }}
+        </label>
+      </div>
+  
+  <button type="button" class="btn btn-primary btn-sm" (click)="NextQuestion()">Next Question</button>
+
+  
+  <div class="text-end mt-2">
+    <button id="submitButton" type="submit" class="btn btn-primary btn-lg">
+      <i class="fas fa-user-plus"></i> Submit</button>
+    <button id="cancelButton" type="reset" class="btn btn-warning btn-lg">
+      <i class="fas fa-undo"></i> Cancel</button>
+  </div>
+  
+  </form>
+  </div>
+  </div>
+  

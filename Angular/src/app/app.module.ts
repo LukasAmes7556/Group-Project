@@ -18,6 +18,7 @@ import { authInterceptorProviders } from 'src/_helpers/auth.interceptor';
 import { MovieEditComponent } from './content/Surveys/edit/edit.component';
 import { MovieListComponent } from './content/Surveys/list/list.component';
 import { SurveyAddComponent } from './content/Surveys/survey-add/survey-add.component';
+import { AnswerPageComponent } from './content/Surveys/answer-page/answer-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SurveyAddComponent } from './content/Surveys/survey-add/survey-add.comp
     RegisterComponent,
     MovieListComponent,
     SurveyAddComponent,
-    MovieEditComponent
+    MovieEditComponent,
+    AnswerPageComponent,
   ],
   imports: [
     BrowserModule,
