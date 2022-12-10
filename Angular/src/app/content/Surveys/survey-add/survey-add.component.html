@@ -6,7 +6,7 @@
 
   <h5>Survey Title</h5>
   <input type="text" class="form-control" name="surveyTitle"  
-  [(ngModel)]="surveyTitle" #surveyName="ngModel"  placeholder="Enter your Survey Title" required>
+  [(ngModel)]="form.surveyTitle" #surveyName="ngModel"  placeholder="Enter your Survey Title" required>
  <div *ngIf="surveyName.errors?.['required'] && f.submitted">Survey Title is required </div>
 
  <div *ngFor="let i of ">
@@ -17,11 +17,11 @@
   </div>
   <h5>Question Title</h5>
   <input type="text" class="form-control" name="questionTitle"  
-  [(ngModel)]="questionTitle" #questionName="ngModel"  placeholder="Enter your Question Title" required>
+  [(ngModel)]="form.questionTitle" #questionName="ngModel"  placeholder="Enter your Question Title" required>
   <div *ngIf="questionName.errors?.['required'] && f.submitted">Question Title is required </div>
 
   <h5>Answers</h5>
-  <select name="selectBox" class="form-select" #questionTypeSelector aria-label="Default select example" placeholder="Please Select your Question Type" [(ngModel)]="questionType">
+  <select name="selectBox" class="form-select" #questionTypeSelector aria-label="Default select example" placeholder="Please Select your Question Type" [(ngModel)]="form.questionType">
     <option value="TrueAndFalse">T/F</option>
     <option value="Multiple_Choice">Multiple Choice</option>
   </select>
@@ -34,8 +34,8 @@
 
   </div>
 
-  <div id="messageArea" class="alert alert-danger" *ngIf="message != ''">
-    {{ message }}
+  <div id="messageArea" class="alert alert-danger" *ngIf="!isSuccessfull">
+    {{ errorMessage }}
   </div>
 
 
@@ -44,21 +44,21 @@
 
 <ng-template #TrueOrFalse>
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
   <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
 </ng-template>
 
 
 <ng-template #MultipleChoice>
 <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer1" #AnswerName1="ngModel"  placeholder="Enter your Answer" required>
   <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer2" #AnswerName2="ngModel"  placeholder="Enter your Answer" required>
   <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer3" #AnswerName3="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer3" #AnswerName3="ngModel"  placeholder="Enter your Answer" required>
   <input type="text" class="form-control" name="answer"  
-  [(ngModel)]="Answers.Answer4" #AnswerName4="ngModel"  placeholder="Enter your Answer" required>
+  [(ngModel)]="form.Answers.Answer4" #AnswerName4="ngModel"  placeholder="Enter your Answer" required>
 </ng-template>
 
 <div class="text-end mt-2">
